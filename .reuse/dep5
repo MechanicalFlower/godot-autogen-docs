@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: GhostSnap
+Upstream-Contact: Florian Vazelle <florian.vazelle@vivaldi.net>
+Source: https://github.com/MechanicalFlower/godot-autogen-docs
+
+Files: *
+Copyright: 2022-present Florian Vazelle
+License: MIT
+
