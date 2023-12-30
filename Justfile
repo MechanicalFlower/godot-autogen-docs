@@ -117,19 +117,27 @@ publish:
     gh release create "{{ addon_version }}" --title="v{{ addon_version }}" --generate-notes
     # TODO: Add a asset-lib publish step
 
-cli *ARGS:
-    just godot --editor --headless --quit --script addons/godot-autogen-docs/cli.gd {{ ARGS }}
-
-# Generate documentation
-doc:
-    just godot --editor --headless --quit --script addons/godot-autogen-docs/cli.gd readthedocs -ddir=res://addons/godot-autogen-docs -doutdir=res://docs/dev-guide/api-ref/
-    just venv pip install mkdocs==1.5.3 mkdocs-literate-nav==0.6.1
-    just venv mkdocs build
-
-# Start serving the documentation
-serve: doc
-    just venv mkdocs serve
-
 # Run unit tests
 test: install-addons import-resources
     just godot --headless --script addons/gut/gut_cmdln.gd -gconfig=.gutconfig.json
+
+# Install MkDocs & MkDocs plugins
+[private]
+install-mkdocs-dependencies:
+    just venv pip install mkdocs==1.5.3 mkdocs-literate-nav==0.6.1
+
+doc-cli *ARGS: install-godot
+    just godot --editor --headless --quit --script addons/godot-autogen-docs/cli.gd {{ ARGS }}
+
+# Deploy your documentation to GitHub Pages
+doc-deploy: install-mkdocs-dependencies
+    just venv mkdocs gh-deploy --force
+
+# Generate documentation
+doc-gen: install-mkdocs-dependencies
+    just cli-doc readthedocs -ddir=res://addons/godot-autogen-docs -doutdir=res://docs/dev-guide/api-ref/
+    just venv mkdocs build
+
+# Start serving the documentation
+doc-serve: install-mkdocs-dependencies
+    just venv mkdocs serve
