@@ -3,7 +3,7 @@
 
 # Godot Autogen Docs
 
-![Godot Badge](https://img.shields.io/badge/godot-4.0|4.1-blue?logo=Godot-Engine&logoColor=white)
+![Godot Badge](https://img.shields.io/badge/godot-4.1%20%7C%204.2-blue?logo=Godot-Engine&logoColor=white)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white)
 ![reuse](./.reuse/REUSE-compliant.svg)
 
@@ -16,14 +16,20 @@ Godot addon that automatically turns your code
 
 ### Usage
 
-To generate a `reference.json`, run:
 ```
-godot --editor --headless --quit --script addons/godot-autogen-docs/reference_collector_cli.gd
-```
+$ just godot --editor --headless --quit --script addons/godot-autogen-docs/cli.gd help
 
-And to turn this JSON file into markdown, run:
-```
-godot --headless --quit --script addons/godot-autogen-docs/markdown.gd
+Usage:
+        godot --editor --headless --quit --script res://addons/godot-autogen-docs/cli.gd <command> [<options> ...]
+
+Commands:
+        help                    Display this text
+        markdown                Export documentation to markdown
+        readthedocs             Export documentation to markdown compatible with the readthedocs theme
+
+Options:
+        -ddir                   Comma delimited list of directories to collect files from
+        -doutdir                A directory for saving documentation files
 ```
 
 ## Contributing

@@ -1,6 +1,5 @@
 ## Finds and generates a code reference from gdscript files.
 @tool
-class_name Collector
 extends SceneTree
 
 var warnings_regex := RegEx.new()
@@ -14,16 +13,6 @@ func _init() -> void:
 
 
 ## Returns a list of file paths found in the directory.
-##
-## **Arguments**
-##
-## - dirpath: path to the directory from which to search files.
-## - patterns: an array of string match patterns, where "*" matches zero or more
-##   arbitrary characters and "?" matches any single character except a period
-##   ("."). You can use it to find files by extensions. To find only GDScript
-##   files, ["*.gd"]
-## - is_recursive: if `true`, walks over subdirectories recursively, returning all
-##   files in the tree.
 func find_files(
 	dirpath := "", patterns := PackedStringArray(), is_recursive := false, _do_skip_hidden := true
 ) -> PackedStringArray:
@@ -99,31 +88,5 @@ func get_reference(files := PackedStringArray(), refresh_cache := false) -> Dict
 		var symbols: Dictionary = workspace.generate_script_api(file)
 		if symbols.has("name") and symbols["name"] == "":
 			symbols["name"] = file.get_file()
-		remove_warning_comments(symbols)
 		data["classes"].append(symbols)
 	return data
-
-
-## Directly removes 'warning-ignore', 'warning-ignore-all', and 'warning-disable'
-## comments from all symbols in the `symbols` dictionary passed to the function.
-func remove_warning_comments(symbols: Dictionary) -> void:
-	symbols["description"] = remove_warnings_from_description(symbols["description"])
-	for meta in ["constants", "members", "signals", "methods", "static_functions"]:
-		for metadata in symbols[meta]:
-			metadata["description"] = remove_warnings_from_description(metadata["description"])
-
-	for sub_class in symbols["sub_classes"]:
-		remove_warning_comments(sub_class)
-
-
-func remove_warnings_from_description(description: String) -> String:
-	var lines := description.strip_edges().split("\n")
-	var clean_lines := PackedStringArray()
-	for line in lines:
-		if not warnings_regex.search(line):
-			clean_lines.append(line)
-	return "\n".join(clean_lines)
-
-
-func print_pretty_json(reference: Dictionary) -> String:
-	return JSON.stringify(reference, "  ")

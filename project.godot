@@ -11,4 +11,8 @@ config_version=5
 [application]
 
 config/name="DemoGodotAutogenDocs"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")

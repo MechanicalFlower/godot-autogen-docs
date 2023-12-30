@@ -67,10 +67,17 @@ install-godot:
 install-addons:
     [ -f plug.gd ] && just godot --headless --script plug.gd install || true
 
+# Workaround from https://github.com/godotengine/godot/pull/68461
+# Import game resources
+import-resources:
+    just godot --headless --export-pack null /dev/null
+    # timeout 60 just godot --editor || true
+    # just godot --headless --quit --editor
+
 # Updates the addon version
 @bump-version:
-    echo "Update version in the plugin.cfg"
-    sed -i "s,version=.*$,version=\"{{ addon_version }}\",g" ./addons/{{ addon_name }}/plugin.cfg
+    # echo "Update version in the plugin.cfg"
+    # sed -i "s,version=.*$,version=\"{{ addon_version }}\",g" ./addons/{{ addon_name }}/plugin.cfg
 
 # Godot binary wrapper
 @godot *ARGS: makedirs install-godot
@@ -110,12 +117,19 @@ publish:
     gh release create "{{ addon_version }}" --title="v{{ addon_version }}" --generate-notes
     # TODO: Add a asset-lib publish step
 
+cli *ARGS:
+    just godot --editor --headless --quit --script addons/godot-autogen-docs/cli.gd {{ ARGS }}
+
+# Generate documentation
 doc:
-    just godot --editor --headless --quit --script addons/godot-autogen-docs/reference_collector_cli.gd
-    just godot --headless --quit --script addons/godot-autogen-docs/markdown.gd
+    just godot --editor --headless --quit --script addons/godot-autogen-docs/cli.gd readthedocs -ddir=res://addons/godot-autogen-docs -doutdir=res://docs/dev-guide/api-ref/
     just venv pip install mkdocs==1.5.3 mkdocs-literate-nav==0.6.1
     just venv mkdocs build
 
-serve:
-    just venv pip install mkdocs==1.5.3 mkdocs-literate-nav==0.6.1
+# Start serving the documentation
+serve: doc
     just venv mkdocs serve
+
+# Run unit tests
+test: install-addons import-resources
+    just godot --headless --script addons/gut/gut_cmdln.gd -gconfig=.gutconfig.json
