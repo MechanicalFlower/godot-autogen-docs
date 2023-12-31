@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Index - Godot Autogen Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Index";
+        var mkdocs_page_input_path = "user-guide/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Godot Autogen Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Index</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#options">Options</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example Usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">API Reference</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../dev-guide/api-ref/cli.gd/">Cli.gd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dev-guide/api-ref/collector.gd/">Collector.gd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dev-guide/api-ref/template_engine.gd/">Template engine.gd</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../about/contributing/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about/changelog/">Changelog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about/license/">License</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Godot Autogen Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Index</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="command-line-interface">Command Line Interface</h2>
+<p>The Godot Autogen Docs tool provides a command-line interface for generating documentation from Godot Engine scripts. This guide outlines the available commands and options.</p>
+<h3 id="usage">Usage</h3>
+<pre><code class="language-bash">$ godot --editor --headless --quit --script res://addons/godot-autogen-docs/cli.gd &lt;command&gt; [&lt;option&gt; ...]
+</code></pre>
+<h4 id="commands">Commands</h4>
+<ul>
+<li>
+<p><code>markdown</code></p>
+<ul>
+<li>Export documentation to markdown.</li>
+</ul>
+</li>
+<li>
+<p><code>readthedocs</code></p>
+<ul>
+<li>Export documentation to markdown compatible with the readthedocs theme.</li>
+</ul>
+</li>
+</ul>
+<h3 id="options">Options</h3>
+<ul>
+<li>
+<p><code>-ddir</code></p>
+<ul>
+<li>Comma-delimited list of directories to collect files from.</li>
+</ul>
+</li>
+<li>
+<p><code>-doutdir</code></p>
+<ul>
+<li>A directory for saving documentation files.</li>
+</ul>
+</li>
+</ul>
+<h3 id="example-usage">Example Usage</h3>
+<p>Display the help Text</p>
+<pre><code class="language-bash">$ godot --editor --headless --quit --script res://addons/godot-autogen-docs/cli.gd help
+</code></pre>
+<p>Export Documentation to Markdown</p>
+<pre><code class="language-bash">$ godot --editor --headless --quit --script res://addons/godot-autogen-docs/cli.gd markdown -ddir &quot;path/to/scripts&quot; -doutdir &quot;path/to/output&quot;
+</code></pre>
+<p>Export Documentation for ReadTheDocs</p>
+<pre><code class="language-bash">$ godot --editor --headless --quit --script res://addons/godot-autogen-docs/cli.gd readthedocs -ddir &quot;path/to/scripts&quot; -doutdir &quot;path/to/output&quot;
+</code></pre>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>The markdown command exports documentation in regular markdown format.</li>
+<li>The readthedocs command exports documentation in markdown compatible with the readthedocs theme.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Welcome"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dev-guide/api-ref/cli.gd/" class="btn btn-neutral float-right" title="Cli.gd">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dev-guide/api-ref/cli.gd/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
